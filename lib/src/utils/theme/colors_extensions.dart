@@ -11,6 +11,7 @@ class MyColors extends ThemeExtension<MyColors> {
     required this.orange,
     required this.red,
     required this.slateBlue,
+    required this.mainColor,
 
   });
   // darkGray  darkOrange darkRed mainColor darkSlateBlue
@@ -19,6 +20,7 @@ class MyColors extends ThemeExtension<MyColors> {
   final Color? orange;
   final Color? red;
   final Color? slateBlue;
+  final Color? mainColor;
   
   @override
   ThemeExtension<MyColors> copyWith({
@@ -33,7 +35,7 @@ class MyColors extends ThemeExtension<MyColors> {
       orange: orange,
       red: red,
       textColor: textColor,
-      slateBlue: slateBlue,
+      slateBlue: slateBlue, mainColor: mainColor,
     );
   }
 
@@ -46,6 +48,7 @@ class MyColors extends ThemeExtension<MyColors> {
       return this;
     }
     return MyColors(
+      mainColor:  mainColor,
       gray: gray,
       orange: orange,
       red: red,
@@ -55,6 +58,7 @@ class MyColors extends ThemeExtension<MyColors> {
   }
 
   static const MyColors dark = MyColors(
+    mainColor: AppColorsDark.mainColor,
    gray: AppColorsDark.darkGray,
     orange: AppColorsDark.darkOrange,
     red: AppColorsDark.darkRed,
@@ -63,6 +67,7 @@ class MyColors extends ThemeExtension<MyColors> {
   );
 
   static const MyColors light = MyColors(
+    mainColor: AppColorsLight.mainColor,
     gray: AppColorsLight.lightGray,
     orange: AppColorsLight.orange,
     red: AppColorsLight.red,
