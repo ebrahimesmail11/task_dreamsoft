@@ -24,22 +24,24 @@ class CustomDrawer extends StatelessWidget {
           bottom: 20.h,
         ),
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                AppStrings.themeMode,
-                style: TextStyles.styleRobotoSemiBold16(context).copyWith(
-                  color: context.colors.textColor,
+          FittedBox(
+            child: Row(
+              children: [
+                Text(
+                  AppStrings.themeMode,
+                  style: TextStyles.styleRobotoSemiBold16(context).copyWith(
+                    color: context.colors.textColor,
+                  ),
                 ),
-              ),
-              Switch(
-                value: themeController.isDarkMode.value,
-                onChanged: (value) {
-                  themeController.toggleTheme();
-                },
-              ),
-            ],
+                20.horizontalSpace,
+                Switch(
+                  value: themeController.isDarkMode.value,
+                  onChanged: (value) {
+                    themeController.toggleTheme();
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),

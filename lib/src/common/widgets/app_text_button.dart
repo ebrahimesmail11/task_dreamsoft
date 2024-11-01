@@ -33,7 +33,7 @@ class AppTextButton extends StatelessWidget {
       style: ButtonStyle(
         shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 24.0),
           ),
         ),
         backgroundColor: WidgetStatePropertyAll(
@@ -41,18 +41,20 @@ class AppTextButton extends StatelessWidget {
         ),
         padding:WidgetStatePropertyAll<EdgeInsets>(
           EdgeInsets.symmetric(
-            horizontal: horizontalPadding?.w ?? 12.w,
-            vertical: verticalPadding?.h ?? 14.h,
+            horizontal: horizontalPadding?.w ?? 16.w,
+            vertical: verticalPadding?.h ?? 8.h,
           ),
         ),
         fixedSize:WidgetStatePropertyAll(
-          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 50.h),
+          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 30.h),
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        buttonText,
-        style: textStyle,
+      child: FittedBox(
+        child: Text(
+          buttonText,
+          style: textStyle,
+        ),
       ),
     );
   }
