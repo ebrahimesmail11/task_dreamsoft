@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_deamsoft/src/common/base/app_images.dart';
 import 'package:task_deamsoft/src/common/widgets/text_field_widget.dart';
-import 'package:task_deamsoft/src/features/presentation/view/dashboard_mobile_views/dashboard_mobile_views.dart';
 import 'package:task_deamsoft/src/features/presentation/view/dashboard_mobile_views/widgets/container_image.dart';
 import 'package:task_deamsoft/src/features/presentation/view/dashboard_mobile_views/widgets/custom_container_list_view.dart';
 import 'package:task_deamsoft/src/features/presentation/view/dashboard_mobile_views/widgets/data_image_grid_view_list.dart';

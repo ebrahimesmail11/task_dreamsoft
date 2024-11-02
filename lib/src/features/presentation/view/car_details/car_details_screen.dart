@@ -28,6 +28,8 @@ class CarDetailsScreen extends StatelessWidget {
       backgroundColor: context.colors.mainColor,
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               clipBehavior: Clip.none,

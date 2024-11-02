@@ -7,7 +7,7 @@ class ActionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final buttonSpacing = SizedBox(width: 8.w);
+    final bool isWideScreen = MediaQuery.of(context).size.width > 600; // عرض 600 يعتبر كبير للشاشات
     final List<Map<String, dynamic>> actions = [
       {
         'icon': Icons.bookmark_border,
@@ -49,12 +49,14 @@ class ActionSection extends StatelessWidget {
 
     return SizedBox(
       width: double.infinity,
-     // padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: Wrap(
-        spacing: 2.w, // المسافة بين العناصر
+        alignment: WrapAlignment.center,
+        spacing: isWideScreen ? 8.w : 20.w,
+        runSpacing: isWideScreen ? 8.h : 16.h,
         children: actions.map<Widget>((action) {
           if (action['isCircle'] == true) {
             return CircleAvatar(
+              radius: isWideScreen ? 30.r : 30.r, // حجم دائري يتغير للشاشات الكبيرة
               backgroundColor: action['backgroundColor'],
               child: IconButton(
                 icon: Icon(action['icon'], color: action['iconColor']),
@@ -62,12 +64,15 @@ class ActionSection extends StatelessWidget {
               ),
             );
           }
-          return ActionButton(
-            icon: action['icon'],
-            text: action['text'],
-            backgroundColor: action['backgroundColor'],
-            iconColor: action['iconColor'],
-            onPressed: action['onPressed'],
+          return SizedBox(
+            width: isWideScreen ? MediaQuery.of(context).size.width * 0.4 : double.infinity,
+            child: ActionButton(
+              icon: action['icon'],
+              text: action['text'],
+              backgroundColor: action['backgroundColor'],
+              iconColor: action['iconColor'],
+              onPressed: action['onPressed'],
+            ),
           );
         }).toList(),
       ),
@@ -105,6 +110,7 @@ class ActionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         elevation: 0,
+        minimumSize: Size(double.infinity, 48.h), // جعل الزر بعرض الشاشة تقريبًا
       ),
       onPressed: onPressed,
     );
