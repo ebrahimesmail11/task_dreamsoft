@@ -6,8 +6,8 @@ import 'package:task_deamsoft/src/common/base/app_strings.dart';
 import 'package:task_deamsoft/src/common/base/extensions.dart';
 import 'package:task_deamsoft/src/common/base/text_styles.dart';
 
-class ElvatedButtonWidget extends StatelessWidget {
-  const ElvatedButtonWidget({
+class ElevatedButtonWidget extends StatelessWidget {
+  const ElevatedButtonWidget({
     super.key,
   });
 

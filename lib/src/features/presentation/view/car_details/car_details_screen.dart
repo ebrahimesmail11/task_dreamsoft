@@ -7,10 +7,14 @@ import 'package:task_deamsoft/src/common/base/app_strings.dart';
 import 'package:task_deamsoft/src/common/base/extensions.dart';
 import 'package:task_deamsoft/src/common/base/text_styles.dart';
 import 'package:task_deamsoft/src/features/data/models/car_image_modle.dart';
+import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/action_section.dart';
+import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/car_detail_data_widget.dart';
 import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/custom_app_bar.dart';
 import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/custom_container_details.dart';
 import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/elvated_button_widget.dart';
 import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/price_rich_text.dart';
+import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/section_all_car_container.dart';
+import 'package:task_deamsoft/src/features/presentation/view/car_details/widgets/section_car_list_view_horizontal.dart';
 import 'package:task_deamsoft/src/features/presentation/view/dashboard_mobile_views/widgets/container_image.dart';
 
 class CarDetailsScreen extends StatelessWidget {
@@ -22,7 +26,6 @@ class CarDetailsScreen extends StatelessWidget {
     final CarImageModel carImageModel = Get.arguments;
     return Scaffold(
       backgroundColor: context.colors.mainColor,
-      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -32,25 +35,29 @@ class CarDetailsScreen extends StatelessWidget {
                 ContainerImage(
                   image: carImageModel.image,
                 ),
+                 const Positioned(
+                  child:  CustomRowHeader(),
+                ),
                 Positioned(
-                  top: 150.h,
-                  left: 20.w,
+                  top: 160.h,
+                  left: - MediaQuery.of(context).size.width * .009,
                   child: CustomContainerDetails(
                     child: buildDetailRow(AppImages.frame, AppStrings.walk,
                         AppStrings.price2, context),
                   ),
                 ),
                 Positioned(
-                  top: 150.h,
-                  left: 135.w,
+                  top: 160.h,
+                  left: MediaQuery.of(context).size.width * 0.35,
+                  //right: MediaQuery.of(context).size.width * 0.03,
                   child: CustomContainerDetails(
                     child: buildDetailRow(AppImages.dataRange, AppStrings.date,
                         AppStrings.year1, context),
                   ),
                 ),
                 Positioned(
-                  top: 150.h,
-                  right: 20.w,
+                  top: 160.h,
+                  right:  MediaQuery.of(context).size.width * 0.009,
                   child: CustomContainerDetails(
                     child: buildDetailRow(AppImages.motor, AppStrings.engine,
                         AppStrings.six, context),
@@ -58,7 +65,7 @@ class CarDetailsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            90.verticalSpace,
+            135.verticalSpace,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Row(
@@ -74,9 +81,27 @@ class CarDetailsScreen extends StatelessWidget {
               ),
             ),
             36.verticalSpace,
-            const  ElvatedButtonWidget(),
-
-           
+            const ElevatedButtonWidget(),
+            24.verticalSpace,
+            const CarDetailDataWidget(),
+            16.verticalSpace,
+            SizedBox(
+              width: 346.w,
+              child: Text(
+                AppStrings.text,
+                style: TextStyles.styleRobotoRegular16(context).copyWith(
+                  color: context.colors.textColor,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            16.verticalSpace,
+            const SectionAllCarContainer(),
+            16.verticalSpace,
+            const SectinCarListViewHorizontal(),
+            16.verticalSpace,
+            const ActionSection(),
+            16.verticalSpace,
           ],
         ),
       ),
@@ -85,31 +110,30 @@ class CarDetailsScreen extends StatelessWidget {
 
   Widget buildDetailRow(
       String image, String title, String value, BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
-      child: Column(
-        children: [
-          SvgPicture.asset(image),
-          8.verticalSpace,
-          FittedBox(
-            child: Text(
-              title,
-              style: TextStyles.styleRobotoRegular12(context).copyWith(
-                color: Colors.black,
-              ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SvgPicture.asset(image),
+        8.verticalSpace,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            style: TextStyles.styleRobotoRegular12(context).copyWith(
+              color: Colors.black,
             ),
           ),
-          const Spacer(),
-          FittedBox(
-            child: Text(
-              value,
-              style: TextStyles.styleRobotoRegular12(context).copyWith(
-                color: Colors.black,
-              ),
+        ),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            value,
+            style: TextStyles.styleRobotoRegular12(context).copyWith(
+              color: Colors.black,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

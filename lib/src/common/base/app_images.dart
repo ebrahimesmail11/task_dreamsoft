@@ -20,4 +20,8 @@ class AppImages {
   static const String collectionCar='assets/images/collectionCar.png';
   static const String share='assets/images/shareLight.svg';
   static const String heart='assets/images/heart.svg';
+  static const String camera='assets/images/camera.svg';
+  static const String carBlack= 'assets/images/carBlack.svg';
+  static const String chair= 'assets/images/chair.svg';
+  static const String engine=   'assets/images/engine.svg';
 }

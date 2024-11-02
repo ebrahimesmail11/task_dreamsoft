@@ -14,19 +14,46 @@ class DashboardTabletViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         const Expanded(
           flex: 1,
-          child: CustomDrawer(),),
-        SizedBox(width: 32.w,),
-        const Expanded(
+          child: CustomDrawer(),
+        ),
+        SizedBox(
+          width: 32.w,
+        ),
+        Expanded(
           flex: 3,
-          child: Padding(
-            padding: EdgeInsets.only(top: 40),
-            child: DashboardMobileViews(),
-          ),),
-          const SizedBox(width: 32,),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                20.verticalSpace,
+                SizedBox(
+                    height: 300.h, child: const CustomContainerListView()),
+                const ContainerImage(
+                  image: AppImages.carlogo,
+                ),
+                20.verticalSpace,
+                const TextFieldWidget(),
+                24.verticalSpace,
+                const SectionButton(),
+                24.verticalSpace,
+                 const DataImageGridViewList(
+                  height: 600,
+                ),
+                90.verticalSpace,
+                const ContainerImage(
+                  image: AppImages.collectionCar,
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 32,
+        ),
       ],
     );
   }

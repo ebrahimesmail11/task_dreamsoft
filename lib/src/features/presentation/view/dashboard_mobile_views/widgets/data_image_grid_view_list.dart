@@ -6,25 +6,31 @@ import 'package:task_deamsoft/src/features/presentation/view/car_details/car_det
 import 'package:task_deamsoft/src/features/presentation/view/dashboard_mobile_views/widgets/custom_container_data_image.dart';
 
 class DataImageGridViewList extends StatelessWidget {
-  const DataImageGridViewList({super.key});
-
+  const DataImageGridViewList({super.key, this.height});
+  final double? height;
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-            height: 900.h,
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-              ),
-              itemBuilder: (context, index) =>  GestureDetector(
-                onTap: () {
-                  Get.toNamed(CarDetailsScreen.routeName, arguments: carImage[index]);
-                },
-                child: CustomContainerDataImage(image: carImage[index].image,)),
-              itemCount: carImage.length,
+    return SizedBox(
+      height: height ?? 400.h,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8,
+        ),
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () {
+            Get.toNamed(CarDetailsScreen.routeName, arguments: carImage[index]);
+          },
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: 350.h, maxWidth: 300.w),
+            child: CustomContainerDataImage(
+              image: carImage[index].image,
             ),
-          );
+          ),
+        ),
+        itemCount: carImage.length,
+      ),
+    );
   }
 }
